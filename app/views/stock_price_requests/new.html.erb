@@ -1,0 +1,17 @@
+<div class='stock-price-wrapper'>
+  <%= form_tag stock_price_requests_path do %>
+    <div class='stock-price-box'>
+      <div class='stock-price-box__label'>
+        Current price
+      </div>
+      <div class='stock-price-box__price'>
+        <%= @stock_price.present? ? number_to_currency(@stock_price) : 'Unknown' %>
+      </div>
+    </div>
+    <%= text_field_tag(:stock_symbol,
+                       @stock_symbol, class: 'input-element',
+                       placeholder: 'Enter stock symbol'
+                      ) %>
+    <%= submit_tag 'Fetch price', class: 'btn' %>
+  <% end %>
+</div>
